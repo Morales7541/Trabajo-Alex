@@ -1,30 +1,41 @@
 #include <iostream>
-using namespace std;
-int main(){
 
-    float a, b, c, d, e, f, denominador, x, y;
-    cout << "Introduzca el valor de a:";
-    cin >> a;
-    cout << "Introdusca el valor de b:";
-    cin >> b;
-    cout << "Introdusca el valor de c:";
-    cin >> c;
-    cout << "Introduzca el valor de d:";
-    cin >> d;
-    cout << "Introdusca el valor de e:";
-    cin >> e;
-    cout << "Introdusca el valor de f:";
-    cin >> f;
-    denominador = a * e - b * d;
-    if (denominador == 0)
-    cout << " no solucion\n";
-    else
-    {
-        x = (c * e - b * f) / denominador;
-        y = (a * f - c * d) / denominador;
-        cout << " la solucion del sistema es\n";
-        cout << " x = " << x << " y = " << y << endl;
+int main() {
+    double a, b, c, d, e, f;
+
+    // Leer los coeficientes
+    std::cout << "Ingrese los coeficientes de las ecuaciones:\2";
+    std::cout << "a: ";
+    std::cin >> a;
+    std::cout << "b: ";
+    std::cin >> b;
+    std::cout << "c: ";
+    std::cin >> c;
+    std::cout << "d: ";
+    std::cin >> d;
+    std::cout << "e: ";
+    std::cin >> e;
+    std::cout << "f: ";
+    std::cin >> f;
+
+    // Calcular la solución
+    double determinante = a * d - b * c;
+    double x, y;
+
+    if (determinante != 0) {
+        x = (e * d - b * f) / determinante;
+        y = (a * f - e * c) / determinante;
+        std::cout << "Solución:\n";
+        std::cout << "x = " << x << std::endl;
+        std::cout << "y = " << y << std::endl;
+    } else {
+        if (e * c - a * f == 0 && b * f - e * d == 0) {
+            std::cout << "El sistema tiene infinitas soluciones.\n";
+        } else {
+            std::cout << "El sistema no tiene solución.\n";
+        }
     }
 
-   return 0;
-} // ACTUALIZAR EL EJERCIO PARA EL CASO QUE SI EL RESULTADO DE "X" ES POSITIVO, EL RESULTADO DE "Y" SE ELEVARA AL CUBO, CASO CONTRARIO DEBERA MOSTRAR "ERROR"
+    return 0;
+}
+
